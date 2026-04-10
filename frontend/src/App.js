@@ -8,6 +8,7 @@ import DueTasks from "./pages/DueTasks";
 import Login from "./pages/Login";
 import Tasks from "./pages/Tasks";
 import Trash from "./pages/Trash";
+import Signup from "./pages/Signup";
 import {
   createTask,
   fetchTasks,
