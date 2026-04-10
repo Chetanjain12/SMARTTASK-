@@ -50,7 +50,7 @@ const Login = ({ onAuthSuccess }) => {
       // update app state
       if (onAuthSuccess) onAuthSuccess(data);
 
-      navigate("/dashboard");
+      navigate("/");
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
     }
