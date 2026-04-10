@@ -4,7 +4,7 @@ import { registerUser } from "../services/authService";
 import "../styles/login.css";
 
 const Signup = () => {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -34,11 +34,11 @@ const Signup = () => {
 
         <form onSubmit={handleSignup}>
           <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
+            type="text"
+            name="name"
+            placeholder="Full Name"
             onChange={handleChange}
-            value={form.email}
+            value={form.name}
             required
           />
 
