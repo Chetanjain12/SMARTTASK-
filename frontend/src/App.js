@@ -109,7 +109,9 @@ function App() {
       await permanentDeleteTask(id);
       await loadTasks();
     } catch (err) {
-      setError(err.response?.data?.message || "Failed to permanently delete task");
+      setError(
+        err.response?.data?.message || "Failed to permanently delete task",
+      );
     }
   };
 
@@ -117,18 +119,28 @@ function App() {
     if (!searchTerm.trim()) return tasks;
     const query = searchTerm.toLowerCase();
     return tasks.filter(
-      (task) => task.title.toLowerCase().includes(query) || (task.description || "").toLowerCase().includes(query)
+      (task) =>
+        task.title.toLowerCase().includes(query) ||
+        (task.description || "").toLowerCase().includes(query),
     );
   }, [tasks, searchTerm]);
 
   return (
     <>
       {error ? <div className="global-error">{error}</div> : null}
-      {loading && isAuthenticated ? <div className="global-loading">Loading...</div> : null}
+      {loading && isAuthenticated ? (
+        <div className="global-loading">Loading...</div>
+      ) : null}
       <Routes>
         <Route
           path="/login"
-          element={isAuthenticated ? <Navigate to="/" replace /> : <Login onAuthSuccess={handleAuthSuccess} />}
+          element={
+            isAuthenticated ? (
+              <Navigate to="/" replace />
+            ) : (
+              <Login onAuthSuccess={handleAuthSuccess} />
+            )
+          }
         />
         <Route
           path="/"
@@ -141,7 +153,10 @@ function App() {
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
               >
-                <Dashboard tasks={searchedTasks} onCreateTask={handleCreateTask} />
+                <Dashboard
+                  tasks={searchedTasks}
+                  onCreateTask={handleCreateTask}
+                />
               </Layout>
             </ProtectedRoute>
           }
@@ -157,7 +172,11 @@ function App() {
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
               >
-                <Tasks tasks={searchedTasks} onUpdateTask={handleUpdateTask} onDeleteTask={handleDeleteTask} />
+                <Tasks
+                  tasks={searchedTasks}
+                  onUpdateTask={handleUpdateTask}
+                  onDeleteTask={handleDeleteTask}
+                />
               </Layout>
             </ProtectedRoute>
           }
@@ -173,7 +192,11 @@ function App() {
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
               >
-                <DueTasks tasks={searchedTasks} onUpdateTask={handleUpdateTask} onDeleteTask={handleDeleteTask} />
+                <DueTasks
+                  tasks={searchedTasks}
+                  onUpdateTask={handleUpdateTask}
+                  onDeleteTask={handleDeleteTask}
+                />
               </Layout>
             </ProtectedRoute>
           }
@@ -189,7 +212,10 @@ function App() {
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
               >
-                <Completed tasks={searchedTasks} onUpdateTask={handleUpdateTask} />
+                <Completed
+                  tasks={searchedTasks}
+                  onUpdateTask={handleUpdateTask}
+                />
               </Layout>
             </ProtectedRoute>
           }
@@ -214,7 +240,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
   );

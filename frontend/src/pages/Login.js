@@ -92,7 +92,7 @@ const Login = ({ onAuthSuccess }) => {
           <button type="submit">Login</button>
         </form>
 
-        <p onClick={() => navigate("/register")}>
+        <p onClick={() => navigate("/signup")}>
           Don't have an account? <span>Signup</span>
         </p>
       </div>
