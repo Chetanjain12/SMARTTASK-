@@ -43,6 +43,15 @@ const Signup = () => {
           />
 
           <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            onChange={handleChange}
+            value={form.email}
+            required
+          />
+
+          <input
             type="password"
             name="password"
             placeholder="Password"
@@ -53,7 +62,6 @@ const Signup = () => {
 
           <button type="submit">Signup</button>
         </form>
-
         <p onClick={() => navigate("/login")}>
           Already have an account? <span>Login</span>
         </p>
