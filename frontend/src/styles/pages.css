@@ -1,0 +1,69 @@
+.page {
+  min-height: 500px;
+}
+
+.page h2 {
+  margin: 2px 0 12px;
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 14px;
+}
+
+.dashboard-left.card,
+.dashboard-right .card {
+  padding: 14px;
+}
+
+.dashboard-right {
+  display: grid;
+  gap: 14px;
+}
+
+.simple-list {
+  padding-left: 18px;
+  color: #475467;
+}
+
+.tasks-wrap.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.tasks-wrap.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.due-overdue .task-card {
+  border-color: #fca5a5;
+  box-shadow: 0 10px 24px rgba(239, 68, 68, 0.12);
+}
+
+.due-label {
+  color: #b91c1c;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.page-header-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.completed-meta {
+  color: #166534;
+  font-weight: 700;
+}
+
+@media (max-width: 1000px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+}

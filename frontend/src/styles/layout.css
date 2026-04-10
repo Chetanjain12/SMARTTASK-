@@ -1,0 +1,27 @@
+.app-shell {
+  width: min(1400px, calc(100vw - 32px));
+  min-height: calc(100vh - 32px);
+  margin: 16px auto;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 16px;
+}
+
+.app-main {
+  background: #f7f9fd;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.app-content {
+  padding: 18px;
+}
+
+@media (max-width: 1024px) {
+  .app-shell {
+    width: calc(100vw - 20px);
+    grid-template-columns: 1fr;
+    margin: 10px auto;
+  }
+}

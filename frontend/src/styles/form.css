@@ -1,0 +1,32 @@
+.task-form {
+  display: grid;
+  gap: 10px;
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.task-form-row {
+  display: grid;
+  grid-template-columns: 1fr 140px 100px;
+  gap: 8px;
+}
+
+.task-form button {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #6559ff, #8c4bdf);
+  color: #fff;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .task-form-row {
+    grid-template-columns: 1fr;
+  }
+}

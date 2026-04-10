@@ -1,0 +1,56 @@
+.topbar {
+  padding: 14px 18px;
+  background: #fff;
+  border-bottom: 1px solid #e8ecf3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.topbar-dev {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.topbar-search {
+  width: min(420px, 100%);
+  background: #f1f4f9;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 10px 14px;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.topbar-meta,
+.topbar-user {
+  color: #344054;
+  font-size: 0.94rem;
+}
+
+.topbar-logout {
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  background: #fff;
+  padding: 8px 12px;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .topbar-right {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+}
