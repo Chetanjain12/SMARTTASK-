@@ -1,44 +1,19 @@
 import React from "react";
+import { FiCheckCircle, FiClock, FiLayers, FiTrendingUp } from "react-icons/fi";
 import "../styles/cards.css";
-import { FiLayers, FiClock, FiCheckCircle, FiTrendingUp } from "react-icons/fi";
 
 function StatsCards({ tasks }) {
   const activeTasks = tasks.filter((task) => !task.deleted);
 
   const total = activeTasks.length;
-  const pending = activeTasks.filter(
-    (task) => task.status === "pending",
-  ).length;
-  const completed = activeTasks.filter(
-    (task) => task.status === "completed",
-  ).length;
+  const pending = activeTasks.filter((task) => task.status === "pending").length;
+  const completed = activeTasks.filter((task) => task.status === "completed").length;
   const progress = total ? Math.round((completed / total) * 100) : 0;
 
   const cards = [
-    {
-      label: "Total",
-      value: total,
-      icon: <FiLayers />,
-      color: "blue",
-    },
-    {
-      label: "Pending",
-      value: pending,
-      icon: <FiClock />,
-      color: "orange",
-    },
-    {
-      label: "Completed",
-      value: completed,
-      icon: <FiCheckCircle />,
-      color: "green",
-    },
-    {
-      label: "Progress",
-      value: `${progress}%`,
-      icon: <FiTrendingUp />,
-      color: "purple",
-    },
+    { label: "Total", value: total, icon: <FiLayers />, color: "blue" },
+    { label: "Pending", value: pending, icon: <FiClock />, color: "orange" },
+    { label: "Completed", value: completed, icon: <FiCheckCircle />, color: "green" },
   ];
 
   return (
@@ -46,27 +21,25 @@ function StatsCards({ tasks }) {
       {cards.map((card) => (
         <div className="stat-card" key={card.label}>
           <div className={`stat-icon ${card.color}`}>{card.icon}</div>
-
           <div className="stat-content">
-            {card.label === "Progress" ? (
-              <h3>
-                {card.label} {card.value}
-              </h3>
-            ) : (
-              <>
-                <p>{card.label}</p>
-                <h3>{card.value}</h3>
-              </>
-            )}
-
-            {card.label === "Progress" && (
-              <div className="progress-track">
-                <span style={{ width: `${progress}%` }} />
-              </div>
-            )}
+            <p>{card.label}</p>
+            <h3>{card.value}</h3>
           </div>
         </div>
       ))}
+
+      <div className="stat-card progress-stat-card">
+        <div className="stat-icon purple">
+          <FiTrendingUp />
+        </div>
+        <div className="stat-content stat-progress-content">
+          <p>Progress</p>
+          <h3>{progress}%</h3>
+        </div>
+        <div className="progress-ring" style={{ "--progress": `${progress}%` }}>
+          <span>{progress}%</span>
+        </div>
+      </div>
     </div>
   );
 }

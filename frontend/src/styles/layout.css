@@ -1,27 +1,46 @@
 .app-shell {
-  width: min(1400px, calc(100vw - 32px));
-  min-height: calc(100vh - 32px);
-  margin: 16px auto;
+  width: min(1420px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 18px;
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 16px;
+  grid-template-columns: 252px minmax(0, 1fr);
+  gap: 18px;
 }
 
 .app-main {
-  background: #f7f9fd;
-  border-radius: 22px;
-  box-shadow: var(--shadow);
+  min-width: 0;
+  background: var(--bg-panel);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
   overflow: hidden;
+  border: 1px solid #edf0f7;
 }
 
 .app-content {
   padding: 18px;
+  min-width: 0;
+}
+
+.app-content.is-dashboard {
+  padding-top: 14px;
 }
 
 @media (max-width: 1024px) {
   .app-shell {
-    width: calc(100vw - 20px);
+    padding: 0;
     grid-template-columns: 1fr;
-    margin: 10px auto;
+    gap: 0;
+  }
+
+  .app-main {
+    min-height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .app-content,
+  .app-content.is-dashboard {
+    padding: 14px 12px 86px;
   }
 }

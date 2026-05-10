@@ -42,27 +42,54 @@ function AddTaskForm({ onSubmit }) {
 
   return (
     <form className="task-form" onSubmit={handleSubmit}>
-      <input
-        id="task-title-input"
-        name="title"
-        placeholder="Title"
-        value={formData.title}
-        onChange={handleChange}
-      />
-      <textarea
-        name="description"
-        placeholder="Enter details"
-        rows="4"
-        value={formData.description}
-        onChange={handleChange}
-      />
+      <div className="field-block">
+        <label htmlFor="task-title-input">Title</label>
+        <input
+          id="task-title-input"
+          name="title"
+          placeholder="Title"
+          value={formData.title}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="field-block">
+        <label>Task Priority</label>
+        <div className="priority-pills" role="radiogroup" aria-label="Task Priority">
+          {[
+            { key: "high", label: "High" },
+            { key: "medium", label: "Medium" },
+            { key: "low", label: "Low" },
+          ].map((item) => (
+            <button
+              type="button"
+              key={item.key}
+              className={`priority-pill ${formData.priority === item.key ? "active" : ""}`}
+              onClick={() => setFormData((prev) => ({ ...prev, priority: item.key }))}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="field-block">
+        <label htmlFor="task-description">Details</label>
+        <textarea
+          id="task-description"
+          name="description"
+          placeholder="Enter task details"
+          rows="4"
+          value={formData.description}
+          onChange={handleChange}
+        />
+      </div>
+
       <div className="task-form-row">
-        <input type="date" name="dueDate" value={formData.dueDate} onChange={handleChange} />
-        <select name="priority" value={formData.priority} onChange={handleChange}>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
+        <div className="field-block">
+          <label htmlFor="due-date">Due Date</label>
+          <input id="due-date" type="date" name="dueDate" value={formData.dueDate} onChange={handleChange} />
+        </div>
         <button type="submit">Add</button>
       </div>
     </form>

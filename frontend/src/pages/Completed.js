@@ -2,7 +2,7 @@ import React from "react";
 import TaskCard from "../components/TaskCard";
 import "../styles/pages.css";
 
-function Completed({ tasks, onUpdateTask }) {
+function Completed({ tasks, onUpdateTask, onDeleteTask }) {
   const completedTasks = tasks.filter((task) => !task.deleted && task.status === "completed");
 
   return (
@@ -18,6 +18,7 @@ function Completed({ tasks, onUpdateTask }) {
             task={task}
             tone="completed"
             onComplete={() => onUpdateTask(task._id, { status: "pending" })}
+            onDelete={() => onDeleteTask(task._id)}
             compact
           />
         ))}

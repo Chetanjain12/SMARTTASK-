@@ -1,103 +1,92 @@
-/* =========================
-   GLOBAL CARD STYLING
-========================= */
 .card,
 .stat-card,
 .task-card {
-  background: #ffffff;
-  border-radius: var(--radius-lg, 18px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
 }
 
-/* =========================
-   STATS GRID
-========================= */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  margin-bottom: 18px;
+  gap: 14px;
+  margin-bottom: 14px;
 }
 
-/* =========================
-   STAT CARD (UPDATED)
-========================= */
 .stat-card {
-  padding: 16px;
-  border: 1px solid #eaecf0;
-
+  border: 1px solid var(--border-soft);
+  padding: 14px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  min-height: 90px;
 }
 
-/* ICON (NEW) */
-.stat-icon {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
+.progress-stat-card {
+  justify-content: space-between;
+}
 
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  font-size: 18px;
+  font-size: 17px;
 }
 
-/* ICON COLORS */
-.stat-icon.blue {
-  background: #e0f2fe;
-  color: #0284c7;
-}
+.stat-icon.blue { background: #e5f3ff; color: #2892de; }
+.stat-icon.orange { background: #fff3e6; color: #dd8a22; }
+.stat-icon.green { background: #e8f9ec; color: #2ea14f; }
+.stat-icon.purple { background: #f3eaff; color: #8a46e4; }
 
-.stat-icon.orange {
-  background: #fff7ed;
-  color: #f97316;
-}
-
-.stat-icon.green {
-  background: #dcfce7;
-  color: #16a34a;
-}
-
-.stat-icon.purple {
-  background: #f3e8ff;
-  color: #9333ea;
-}
-
-/* TEXT */
 .stat-content p {
   margin: 0;
   font-size: 13px;
-  color: #374151; 
-  font-weight: 600; 
+  color: #69718a;
+  font-weight: 600;
 }
 
 .stat-content h3 {
-  margin: 4px 0;
-  font-size: 20px;
+  margin: 2px 0 0;
+  font-size: 27px;
+  line-height: 1;
   font-weight: 700;
 }
 
-/* PROGRESS BAR */
-.progress-track {
-  margin-top: 6px;
-  background: #e5e7eb;
-  height: 8px;
-  border-radius: 999px;
+.progress-ring {
+  width: 86px;
+  height: 48px;
+  border-radius: 86px 86px 0 0;
+  background: conic-gradient(from 180deg at 50% 100%, #7c4bff var(--progress), #dfe3ef 0);
+  position: relative;
   overflow: hidden;
 }
 
-.progress-track span {
-  display: block;
-  height: 100%;
-  background: linear-gradient(90deg, #7552ff, #ff8a4c);
-  border-radius: inherit;
+.progress-ring::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 34px;
+  background: #fff;
+  border-radius: 64px 64px 0 0;
 }
 
-/* =========================
-   FILTERS
-========================= */
+.progress-ring span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #505a74;
+}
+
 .filters {
   display: flex;
   align-items: center;
@@ -109,77 +98,57 @@
 
 .filters select,
 .view-toggle button {
-  border: 1px solid #d0d5dd;
+  border: 1px solid #dce1ec;
   border-radius: 10px;
   padding: 8px 12px;
   background: #fff;
-  cursor: pointer;
 }
 
-/* VIEW TOGGLE */
 .view-toggle {
   display: flex;
   gap: 8px;
 }
 
 .view-toggle .active {
-  background: #111827;
+  background: #25376f;
   color: #fff;
 }
 
-/* =========================
-   TASK CARD (MODERNIZED)
-========================= */
 .task-card {
-  border: 1px solid #eaecf0;
+  border: 1px solid var(--border-soft);
   padding: 14px;
   transition: all 0.2s ease;
 }
 
 .task-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
-/* STATES */
 .task-card.completed {
-  border: 1px solid #86efac;
-  background: #f0fdf4;
+  border: 1px solid #b8f2cb;
+  background: #f5fff7;
 }
 
 .task-card.trash {
-  opacity: 0.75;
+  opacity: 0.82;
 }
 
-/* TOP SECTION */
-.task-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* TITLE */
 .task-card h4 {
   margin: 8px 0 6px;
   font-size: 15px;
 }
 
-/* DESCRIPTION */
 .task-card p {
   margin: 0 0 10px;
-  color: #4b5563;
+  color: #59627d;
   font-size: 0.9rem;
 }
 
-/* DATE */
 .task-date {
-  color: #667085;
-  font-size: 0.85rem;
+  color: #76809b;
+  font-size: 0.84rem;
 }
 
-/* =========================
-   BADGES (PRIORITY)
-========================= */
 .badge {
   padding: 4px 10px;
   border-radius: 999px;
@@ -188,24 +157,10 @@
   text-transform: capitalize;
 }
 
-.badge-low {
-  background: #e0f2fe;
-  color: #075985;
-}
+.badge-low { background: #e6f6ef; color: #21754a; }
+.badge-medium { background: #fff1db; color: #9c620e; }
+.badge-high { background: #ffe5e5; color: #b83232; }
 
-.badge-medium {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.badge-high {
-  background: #fee2e2;
-  color: #b91c1c;
-}
-
-/* =========================
-   ACTION BUTTONS
-========================= */
 .task-actions {
   margin-top: 10px;
   display: flex;
@@ -214,29 +169,47 @@
 }
 
 .task-actions button {
-  border: 1px solid #d0d5dd;
+  border: 1px solid #dbe0eb;
   border-radius: 8px;
   background: #fff;
   padding: 6px 10px;
   cursor: pointer;
-  font-size: 0.83rem;
-  transition: 0.2s;
-}
-
-.task-actions button:hover {
-  background: #f3f4f6;
+  font-size: 0.82rem;
 }
 
 .task-actions .danger {
-  border-color: #fecaca;
-  color: #b91c1c;
+  border-color: #ffcccc;
+  color: #bf2f2f;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 1000px) {
   .stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .stat-card {
+    min-height: 92px;
+    padding: 12px;
+  }
+
+  .stat-content h3 {
+    font-size: 24px;
+  }
+
+  .progress-ring {
+    width: 64px;
+    height: 36px;
+  }
+
+  .progress-ring::before {
+    width: 48px;
+    height: 24px;
   }
 }

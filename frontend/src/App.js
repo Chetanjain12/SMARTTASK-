@@ -157,6 +157,7 @@ function App() {
                 <Dashboard
                   tasks={searchedTasks}
                   onCreateTask={handleCreateTask}
+                  user={auth.user}
                 />
               </Layout>
             </ProtectedRoute>
@@ -216,6 +217,7 @@ function App() {
                 <Completed
                   tasks={searchedTasks}
                   onUpdateTask={handleUpdateTask}
+                  onDeleteTask={handleDeleteTask}
                 />
               </Layout>
             </ProtectedRoute>

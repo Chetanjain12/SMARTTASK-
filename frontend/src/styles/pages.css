@@ -1,30 +1,182 @@
 .page {
-  min-height: 500px;
+  min-height: 0;
 }
 
 .page h2 {
-  margin: 2px 0 12px;
+  margin: 0;
 }
 
 .dashboard-content {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 1fr);
   gap: 14px;
 }
 
 .dashboard-left.card,
 .dashboard-right .card {
   padding: 14px;
+  border: 1px solid var(--border-soft);
+}
+
+.dashboard-left h3,
+.dashboard-right h3 {
+  margin: 0 0 10px;
 }
 
 .dashboard-right {
   display: grid;
-  gap: 14px;
+  gap: 12px;
+  align-content: start;
 }
 
-.simple-list {
-  padding-left: 18px;
-  color: #475467;
+.recent-table {
+  display: grid;
+  gap: 8px;
+}
+
+.recent-head,
+.recent-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 44px;
+  gap: 8px;
+  align-items: center;
+}
+
+.recent-head {
+  font-size: 12px;
+  color: #727b95;
+  font-weight: 700;
+}
+
+.recent-row {
+  font-size: 13px;
+  padding-top: 6px;
+  border-top: 1px solid #eff1f7;
+}
+
+.status-pending { color: #ba7a1d; font-weight: 600; }
+.status-completed { color: #2d9c57; font-weight: 600; }
+
+.creator-chip {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #dce6ff;
+  color: #2b3f7d;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.recent-empty,
+.note-empty {
+  color: #78819b;
+  font-size: 13px;
+}
+
+.notes-list {
+  border: 1px solid #ebedf4;
+  border-radius: 12px;
+  padding: 10px;
+  min-height: 120px;
+  display: grid;
+  gap: 8px;
+}
+
+.note-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+  color: #4d5571;
+}
+
+.note-item time {
+  color: #9aa1b7;
+  white-space: nowrap;
+}
+
+.note-input-row {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr 44px;
+  gap: 8px;
+}
+
+.note-input-row input {
+  border: 1px solid #dfe4f1;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.note-input-row button {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #4663e4, #8853e4);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dashboard-bottom-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 10px;
+}
+
+.priority-donut {
+  width: 130px;
+  aspect-ratio: 1;
+  margin: 2px auto 10px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #8f4df2 0 var(--p-high),
+    #f39c31 var(--p-high) calc(var(--p-high) + var(--p-medium)),
+    #2d9be6 calc(var(--p-high) + var(--p-medium)) 100%
+  );
+  position: relative;
+}
+
+.priority-donut::before {
+  content: "";
+  position: absolute;
+  inset: 31px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.priority-legend {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  color: #637093;
+}
+
+.priority-legend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.high { background: #8f4df2; }
+.dot.medium { background: #f39c31; }
+.dot.low { background: #2d9be6; }
+
+.overdue-card p {
+  margin: 4px 0;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.overdue-card small {
+  color: #7a849f;
 }
 
 .tasks-wrap.grid {
@@ -40,12 +192,12 @@
 }
 
 .due-overdue .task-card {
-  border-color: #fca5a5;
-  box-shadow: 0 10px 24px rgba(239, 68, 68, 0.12);
+  border-color: #f7b6b6;
+  box-shadow: 0 8px 18px rgba(239, 68, 68, 0.1);
 }
 
 .due-label {
-  color: #b91c1c;
+  color: #be3b3b;
   font-size: 0.78rem;
   font-weight: 700;
   margin-bottom: 4px;
@@ -55,15 +207,37 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .completed-meta {
-  color: #166534;
+  color: #2f8f52;
   font-weight: 700;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-left.card,
+  .dashboard-right .card {
+    padding: 12px;
+  }
+
+  .recent-head,
+  .recent-row {
+    grid-template-columns: 1.3fr 1fr 1fr 30px;
+    font-size: 12px;
+  }
+
+  .tasks-wrap.grid {
     grid-template-columns: 1fr;
   }
 }
